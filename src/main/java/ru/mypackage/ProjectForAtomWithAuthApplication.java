@@ -16,4 +16,5 @@ public class ProjectForAtomWithAuthApplication {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
 }

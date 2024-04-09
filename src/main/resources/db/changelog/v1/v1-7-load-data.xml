@@ -11,6 +11,10 @@
 
         <loadData tableName="user_role_junction" file="db/data/user_role_junction-data.csv"/>
 
+        <loadData tableName="topics" file="db/data/topics-data.csv"/>
+
+        <loadData tableName="messages" file="db/data/messages-data.csv"/>
+
     </changeSet>
 
 </databaseChangeLog>

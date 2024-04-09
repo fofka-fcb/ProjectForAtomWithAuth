@@ -1,4 +1,4 @@
-package ru.mypackage.services;
+package ru.mypackage.services.auth;
 
 import com.nimbusds.jwt.SignedJWT;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +70,8 @@ public class TokenService {
     public Authentication validateToken(String token) {
         String username = parseToken(token);
 
-        ApplicationUser user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("user is not valid"));
+        ApplicationUser user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User is not valid!"));
 
         return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), user.getAuthorities());
     }

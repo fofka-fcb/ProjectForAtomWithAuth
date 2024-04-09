@@ -17,7 +17,7 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtAut
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import ru.mypackage.services.LogoutService;
+import ru.mypackage.services.auth.LogoutService;
 import ru.mypackage.utils.JWTFilter;
 
 
@@ -40,7 +40,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/auth/**").permitAll();
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
-                    auth.requestMatchers("/user/**").hasRole("USER");
+                    auth.requestMatchers("/topic/**").hasAnyRole("USER", "ADMIN");
                     auth.anyRequest().authenticated();
                 });
 

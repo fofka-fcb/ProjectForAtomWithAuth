@@ -13,7 +13,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import ru.mypackage.exceptions.TokenExpiredException;
 import ru.mypackage.repository.TokenRepository;
-import ru.mypackage.services.TokenService;
+import ru.mypackage.services.auth.TokenService;
 
 
 import java.io.IOException;

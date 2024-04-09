@@ -1,4 +1,4 @@
-package ru.mypackage.services;
+package ru.mypackage.services.auth;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.mypackage.dto.LoginResponseDTO;
-import ru.mypackage.dto.RegisterResponseDTO;
+import ru.mypackage.dto.auth.LoginResponseDTO;
+import ru.mypackage.dto.auth.RegisterResponseDTO;
 import ru.mypackage.models.ApplicationUser;
 import ru.mypackage.models.Role;
 import ru.mypackage.models.Token;
@@ -78,7 +78,8 @@ public class AuthenticationService {
         return new LoginResponseDTO(user.getUsername(), (Set<Role>) user.getAuthorities(), access_token);
     }
 
-    private void saveUserToken(ApplicationUser user, String jwtToken) {
+    @Transactional
+    protected void saveUserToken(ApplicationUser user, String jwtToken) {
         Token token = new Token();
         token.setUsername(user.getUsername());
         token.setTokenType(TokenType.BEARER);
@@ -88,7 +89,8 @@ public class AuthenticationService {
         tokenRepository.save(token);
     }
 
-    private void revokeAllUserTokens(ApplicationUser user) {
+    @Transactional(readOnly = true)
+    protected void revokeAllUserTokens(ApplicationUser user) {
         List<Token> tokenList = tokenRepository.findAllValidToken(user.getUsername(), false);
 
         if (tokenList.isEmpty())

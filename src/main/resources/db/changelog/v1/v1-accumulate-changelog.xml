@@ -11,6 +11,10 @@
 
     <include file="v1-4-create-token-table.xml" relativeToChangelogFile="true"/>
 
-    <include file="v1-5-load-data.xml" relativeToChangelogFile="true"/>
+    <include file="v1-5-create-table-topics.xml" relativeToChangelogFile="true"/>
+
+    <include file="v1-6-create-table-messages.xml" relativeToChangelogFile="true"/>
+
+    <include file="v1-7-load-data.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

@@ -1,0 +1,31 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="self" id="v1-6">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="messages"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="messages">
+            <column autoIncrement="true" name="message_id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="messages_pkey"/>
+            </column>
+            <column name="username" type="VARCHAR"/>
+            <column name="message" type="VARCHAR"/>
+            <column name="id_of_topic" type="INTEGER"/>
+            <column name="created_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="id_of_topic" baseTableName="messages"
+                                 constraintName="messages_id_of_topic_fkey" deferrable="false"
+                                 initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
+                                 referencedColumnNames="topic_id" referencedTableName="topics"/>
+
+    </changeSet>
+
+</databaseChangeLog>
