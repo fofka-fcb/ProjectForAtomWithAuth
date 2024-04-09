@@ -20,7 +20,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import ru.mypackage.services.auth.LogoutService;
 import ru.mypackage.utils.JWTFilter;
 
-
 @Configuration
 public class SecurityConfiguration {
 

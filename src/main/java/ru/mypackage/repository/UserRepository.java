@@ -17,8 +17,4 @@ public interface UserRepository extends JpaRepository<ApplicationUser, Integer> 
     @EntityGraph(attributePaths = {"authorities"})
     List<ApplicationUser> findAll();
 
-    Optional<ApplicationUser> findByUsernameStartingWith(String username);
-
-    Optional<ApplicationUser> findById(int id);
-
 }

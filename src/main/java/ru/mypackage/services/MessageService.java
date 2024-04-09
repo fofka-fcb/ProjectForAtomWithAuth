@@ -47,7 +47,7 @@ public class MessageService {
                     Sort.by("createdAt"))
             );
 
-         else return messageRepository.findAllByTopic(topicFromRepo);
+        else return messageRepository.findAllByTopic(topicFromRepo);
 
     }
 

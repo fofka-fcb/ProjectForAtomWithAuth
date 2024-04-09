@@ -1,6 +1,5 @@
 package ru.mypackage.models;
 
-
 import jakarta.persistence.*;
 import ru.mypackage.models.enums.TokenType;
 

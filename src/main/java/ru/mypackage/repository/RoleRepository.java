@@ -6,7 +6,6 @@ import ru.mypackage.models.Role;
 
 import java.util.Optional;
 
-
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Integer> {
 

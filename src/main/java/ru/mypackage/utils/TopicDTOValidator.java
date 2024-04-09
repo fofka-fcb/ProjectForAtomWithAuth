@@ -7,7 +7,6 @@ import org.springframework.validation.Validator;
 import ru.mypackage.dto.topic.TopicDTO;
 import ru.mypackage.repository.TopicRepository;
 
-
 @Component
 public class TopicDTOValidator implements Validator {
 

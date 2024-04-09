@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.mypackage.models.ApplicationUser;
 import ru.mypackage.repository.UserRepository;
 
-
 import java.text.ParseException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

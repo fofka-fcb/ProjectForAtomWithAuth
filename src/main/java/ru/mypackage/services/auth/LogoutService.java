@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import ru.mypackage.models.Token;
 import ru.mypackage.repository.TokenRepository;
 
-
 @Service
 public class LogoutService implements LogoutHandler {
 
@@ -34,7 +33,7 @@ public class LogoutService implements LogoutHandler {
         String jwt = authorizationHeader.substring(7);
         Token token = tokenRepository.findByToken(jwt).orElse(null);
 
-        if (token != null ) {
+        if (token != null) {
             token.setExpired(true);
             tokenRepository.save(token);
             SecurityContextHolder.clearContext();

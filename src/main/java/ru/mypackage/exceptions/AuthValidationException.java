@@ -2,7 +2,7 @@ package ru.mypackage.exceptions;
 
 import org.springframework.validation.BindingResult;
 
-public class AuthValidationException extends RuntimeException{
+public class AuthValidationException extends RuntimeException {
 
     private BindingResult bindingResult;
 

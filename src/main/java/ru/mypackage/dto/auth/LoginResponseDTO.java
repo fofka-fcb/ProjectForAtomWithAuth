@@ -13,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginResponseDTO {
+
     private String username;
     private Set<Role> authorities;
     private String jwt;
