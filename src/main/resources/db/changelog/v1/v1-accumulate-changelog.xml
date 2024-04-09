@@ -1,0 +1,16 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="v1-1-create-users-table.xml" relativeToChangelogFile="true"/>
+
+    <include file="v1-2-create-roles-table.xml" relativeToChangelogFile="true"/>
+
+    <include file="v1-3-create-user_role_junction-table.xml" relativeToChangelogFile="true"/>
+
+    <include file="v1-4-create-token-table.xml" relativeToChangelogFile="true"/>
+
+    <include file="v1-5-load-data.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

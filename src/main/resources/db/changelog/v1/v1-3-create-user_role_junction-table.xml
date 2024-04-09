@@ -1,0 +1,35 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="self" id="v1-3">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user_role_junction"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="user_role_junction">
+            <column name="id_user" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_role_junction_pkey"/>
+            </column>
+            <column name="id_role" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_role_junction_pkey"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="id_role" baseTableName="user_role_junction"
+                                 constraintName="user_role_junction_id_role_fkey" deferrable="false"
+                                 initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
+                                 referencedColumnNames="role_id" referencedTableName="roles"/>
+
+        <addForeignKeyConstraint baseColumnNames="id_user" baseTableName="user_role_junction"
+                                 constraintName="user_role_junction_id_user_fkey" deferrable="false"
+                                 initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION"
+                                 referencedColumnNames="user_id" referencedTableName="users"/>
+
+    </changeSet>
+
+</databaseChangeLog>

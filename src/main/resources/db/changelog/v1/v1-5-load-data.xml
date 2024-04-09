@@ -1,0 +1,16 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="self" id="v1-7">
+
+        <loadData tableName="users" file="db/data/users-data.csv"/>
+
+        <loadData tableName="roles" file="db/data/roles-data.csv"/>
+
+        <loadData tableName="user_role_junction" file="db/data/user_role_junction-data.csv"/>
+
+    </changeSet>
+
+</databaseChangeLog>

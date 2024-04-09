@@ -1,0 +1,26 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="self" id="v1-6">
+
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="token"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="token">
+            <column autoIncrement="true" name="id" type="INTEGER">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="token_pkey"/>
+            </column>
+            <column name="username" type="VARCHAR"/>
+            <column name="token" type="VARCHAR"/>
+            <column name="expired" type="BOOLEAN"/>
+            <column name="type" type="VARCHAR"/>
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>
