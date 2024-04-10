@@ -27,7 +27,7 @@ public class TopicDTOValidator implements Validator {
         TopicDTO topicDTO = (TopicDTO) target;
 
         if (topicRepository.findByName(topicDTO.getName()).isPresent()) {
-            errors.rejectValue("topicDTO", "", "This name of topic is already taken!");
+            errors.rejectValue("name", "", "This name of topic is already taken!");
         }
     }
 }
