@@ -43,7 +43,7 @@ public class MessageService {
         if (page != null)
             return messageRepository.findAllByTopic(topicFromRepo, PageRequest.of(
                     page,
-                    1,
+                    3,
                     Sort.by("createdAt"))
             );
 

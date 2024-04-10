@@ -43,7 +43,7 @@ public class TopicService {
             return topicRepository.findAll(
                     PageRequest.of(
                             page,
-                            1,
+                            3,
                             Sort.by("createdAt"))
             ).toList();
 
