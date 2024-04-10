@@ -1,6 +1,7 @@
 # Тестовое задание для GreenAtom
 
 ## Технологии
+* JDK 17+
 * Spring Boot 3.0 (Security, Oauth2, Data, Web, Validation)
 * JSON Web Tokens (JWT)
 * H2 Database (In memory db)
@@ -9,8 +10,7 @@
 
 ## Чтобы начать работу необходимо:
 * Скачать репозиторий: `git clone https://github.com/fofka-fcb/ProjectForAtomWithAuth.git`
-* Установить JDK 17+
-* Установить H2 database на свое устройство
+* Установить H2 database (для запуска в оперативной памяти не обязательно) 
 * Запустить приложение через среду разработки
 
 -> приложение будет работать по адресу http://localhost:9090
