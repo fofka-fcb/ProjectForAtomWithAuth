@@ -9,10 +9,7 @@ import ru.mypackage.dto.error.MessageErrorResponse;
 import ru.mypackage.dto.error.TokenErrorResponse;
 import ru.mypackage.dto.error.TopicErrorResponse;
 import ru.mypackage.dto.error.UserErrorResponse;
-import ru.mypackage.exceptions.ForbiddenException;
-import ru.mypackage.exceptions.MessageNotFoundException;
-import ru.mypackage.exceptions.TokenExpiredException;
-import ru.mypackage.exceptions.TopicNotFoundException;
+import ru.mypackage.exceptions.*;
 
 @RestControllerAdvice
 public class ErrorHandlingControllerAdvice {
@@ -68,6 +65,18 @@ public class ErrorHandlingControllerAdvice {
     @ExceptionHandler(ForbiddenException.class)
     public ResponseEntity<UserErrorResponse> handleForbiddenException(
             ForbiddenException e
+    ) {
+        UserErrorResponse response = new UserErrorResponse(
+                e.getMessage(),
+                System.currentTimeMillis()
+        );
+
+        return new ResponseEntity<>(response, e.getHttpStatus());
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<UserErrorResponse> handleUserNotFoundException(
+            UserNotFoundException e
     ) {
         UserErrorResponse response = new UserErrorResponse(
                 e.getMessage(),

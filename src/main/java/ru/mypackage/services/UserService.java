@@ -2,9 +2,11 @@ package ru.mypackage.services;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.mypackage.dto.user.UserDTO;
+import ru.mypackage.exceptions.UserNotFoundException;
 import ru.mypackage.models.ApplicationUser;
 import ru.mypackage.repository.UserRepository;
 
@@ -39,7 +41,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public UserDTO findOneById(Integer idOfUser) {
         return convertToUserDTO(userRepository.findById(idOfUser)
-                .orElseThrow()
+                .orElseThrow(() -> new UserNotFoundException("User not found!", HttpStatus.NOT_FOUND))
         );
     }
 
