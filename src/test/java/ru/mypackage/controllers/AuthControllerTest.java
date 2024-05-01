@@ -1,7 +1,6 @@
 package ru.mypackage.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -49,7 +48,7 @@ public class AuthControllerTest {
     private JWTFilter jwtFilter;
 
     @Test
-    void shouldCorrectRegUser() throws Exception {
+    void shouldHaveCorrectRegUser() throws Exception {
         RegistrationDTO registrationDTO = new RegistrationDTO("user_1", "password");
 
         RegisterResponseDTO registerResponseDTO =
@@ -71,7 +70,7 @@ public class AuthControllerTest {
     }
 
     @Test
-    void shouldCorrectLoginUser() throws Exception {
+    void shouldHaveCorrectLoginUser() throws Exception {
         LoginDTO loginDTO = new LoginDTO("user_1", "password");
 
         LoginResponseDTO loginResponseDTO =

@@ -59,7 +59,7 @@ class AdminControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void shouldCorrectGetAllUsers() throws Exception {
+    void shouldHaveCorrectGetAllUsers() throws Exception {
         when(userService.findAll())
                 .thenReturn(List.of(new UserDTO("admin"), new UserDTO("user_1")));
 
@@ -71,7 +71,7 @@ class AdminControllerTest {
     }
 
     @Test
-    void shouldCorrectGetOneUserById() throws Exception {
+    void shouldHaveCorrectGetOneUserById() throws Exception {
         Integer idOfUser = 1;
         when(userService.findOneById(idOfUser))
                 .thenReturn(new UserDTO("admin"));
@@ -84,7 +84,7 @@ class AdminControllerTest {
     }
 
     @Test
-    void shouldCorrectThrowExceptionWhenUserNotFound() throws Exception {
+    void shouldHaveCorrectThrowExceptionWhenUserNotFound() throws Exception {
         Integer idOfUser = 3;
         when(userService.findOneById(idOfUser))
                 .thenThrow(new UserNotFoundException("User not found!", HttpStatus.NOT_FOUND));
@@ -98,7 +98,7 @@ class AdminControllerTest {
     }
 
     @Test
-    void shouldCorrectRefTopicNameById() throws Exception {
+    void shouldHaveCorrectRefTopicNameById() throws Exception {
         Integer idOfTopic = 1;
         TopicDTO topicDTO = new TopicDTO("updated name");
         doNothing().when(topicService).updateTopicName(idOfTopic, topicDTO);
@@ -112,7 +112,7 @@ class AdminControllerTest {
     }
 
     @Test
-    void shouldCorrectThrowExceptionWhenTopicNotFound() throws Exception {
+    void shouldHaveCorrectThrowExceptionWhenTopicNotFound() throws Exception {
         TopicDTO topicDTO = new TopicDTO("used name");
 
         doThrow(new TopicNotFoundException("Topic not found!", HttpStatus.NOT_FOUND))
@@ -133,7 +133,7 @@ class AdminControllerTest {
 
     @Test
     @WithMockUser(username = "admin", roles = "ADMIN")
-    void shouldCorrectRefMessageById() throws Exception{
+    void shouldHaveCorrectRefMessageById() throws Exception {
         MessageDTO messageDTO = new MessageDTO("some message");
 
         doNothing()
@@ -150,7 +150,7 @@ class AdminControllerTest {
 
     @Test
     @WithMockUser(username = "admin", roles = "ADMIN")
-    void shouldCorrextThrowExceptionWhenRefMessageById() throws Exception {
+    void shouldHaveCorrextThrowExceptionWhenRefMessageById() throws Exception {
         MessageDTO messageDTO = new MessageDTO("some message");
 
         doThrow(new MessageNotFoundException("Message with this id not found!", HttpStatus.NOT_FOUND))
@@ -169,7 +169,7 @@ class AdminControllerTest {
     }
 
     @Test
-    void shouldCorrectDeleteTopicById() throws Exception {
+    void shouldHaveCorrectDeleteTopicById() throws Exception {
         doNothing().when(topicService).deleteTopic(any(Integer.class));
 
         ResultActions response = mockMvc.perform(delete("/admin/topic/0"));
@@ -179,7 +179,7 @@ class AdminControllerTest {
     }
 
     @Test
-    void shouldCorrectThrowExceptionWhenDeleteTopicById() throws Exception {
+    void shouldHaveCorrectThrowExceptionWhenDeleteTopicById() throws Exception {
         doThrow(new TopicNotFoundException("Topic not found!", HttpStatus.NOT_FOUND))
                 .when(topicService)
                 .deleteTopic(any(Integer.class));
@@ -194,7 +194,7 @@ class AdminControllerTest {
 
     @Test
     @WithMockUser(username = "admin", roles = "ADMIN")
-    void shouldCorrectDeleteMessageById() throws Exception {
+    void shouldHaveCorrectDeleteMessageById() throws Exception {
         doNothing().when(messageService).deleteMessage(any(Integer.class), any(String.class));
 
         ResultActions response = mockMvc.perform(delete("/admin/message/0"));
@@ -204,7 +204,7 @@ class AdminControllerTest {
 
     @Test
     @WithMockUser(username = "admin", roles = "ADMIN")
-    void shouldCorrectThrowExceptionWhenDeleteMessageById() throws Exception {
+    void shouldHaveCorrectThrowExceptionWhenDeleteMessageById() throws Exception {
         doThrow(new MessageNotFoundException("Message with this id not found!", HttpStatus.NOT_FOUND))
                 .when(messageService)
                 .deleteMessage(any(Integer.class), any(String.class));

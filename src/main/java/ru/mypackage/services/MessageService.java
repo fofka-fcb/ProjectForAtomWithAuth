@@ -48,7 +48,6 @@ public class MessageService {
             );
 
         else return messageRepository.findAllByTopic(topicFromRepo);
-
     }
 
     @Transactional
